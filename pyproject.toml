@@ -1,8 +1,9 @@
 [project]
 name = "gemini-file-search-tool-mgmt"
 version = "0.1.0"
-description = "Add your description here"
+description = "Local Streamlit app for managing Gemini API File Search Stores with Blue/Green refresh and RAG chat."
 readme = "README.md"
+license = "MIT"
 requires-python = ">=3.12"
 dependencies = [
     "dotenv>=0.9.9",
