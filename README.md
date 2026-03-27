@@ -1,6 +1,24 @@
 # Gemini File Search Store Manager & RAG Chat
 
-A powerful, local Streamlit application for managing Google Gemini API [File Search Stores](https://ai.google.dev/gemini-api/docs/file-search) and conducting RAG (Retrieval-Augmented Generation) chats.
+> **⚠️ Archive Notice (March 2026)**
+>
+> This project is **archived** and no longer actively maintained.
+>
+> The [Documents API](https://ai.google.dev/api/file-search/documents) — which
+> allows listing, retrieving, and deleting individual documents within a File Search
+> Store — already existed when this tool was developed (December 2025), but was
+> overlooked during the design phase. The SQLite-based state management layer this
+> tool provides is therefore unnecessary for most use cases.
+>
+> The code remains available as a reference for:
+>
+> - Blue/Green store refresh pattern
+> - MD5-based deduplication for File Search uploads
+> - Streamlit + SQLAlchemy integration example
+>
+> For the full story, see the [Zenn article (Japanese)](https://zenn.dev/yh_catalysis/articles/filesearchtoolmgmt-dev1).
+
+A local Streamlit application for managing Google Gemini API [File Search Stores](https://ai.google.dev/gemini-api/docs/file-search) and conducting RAG (Retrieval-Augmented Generation) chats.
 
 This tool provides a GUI to upload documents, manage vector store lifecycles (with Blue/Green refresh), and chat with your knowledge base using persistent history tracking.
 
@@ -40,7 +58,7 @@ This tool provides a GUI to upload documents, manage vector store lifecycles (wi
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/joelgoldschmidt0214/gemini_file_search_tool_mgmt.gitgemini_file_search_tool_mgmt.git
+git clone https://github.com/yh-catalysis/gemini_file_search_tool_mgmt.git
 cd gemini_file_search_tool_mgmt
 ```
 
@@ -85,16 +103,16 @@ streamlit run app.py
 Use the sidebar radio buttons to switch between modes:
 
 1. **Documents:**
-    - Select or Create a Store.
-    - Drag & Drop files to upload.
-    - Click **"🔄 Refresh Store"** if you have modified files locally or want to clean up the index.
+   - Select or Create a Store.
+   - Drag & Drop files to upload.
+   - Click **"🔄 Refresh Store"** if you have modified files locally or want to clean up the index.
 2. **RAG Chat:**
-    - Select a Store to chat with.
-    - Create "✨ New Session" or resume history.
-    - Export history via the button above the input bar.
+   - Select a Store to chat with.
+   - Create "✨ New Session" or resume history.
+   - Export history via the button above the input bar.
 3. **History Manager:**
-    - View list of all chat sessions.
-    - Delete specific histories.
+   - View list of all chat sessions.
+   - Delete specific histories.
 
 ## 🏗️ Architecture
 

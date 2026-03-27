@@ -1,5 +1,23 @@
 # Gemini File Search Store Manager & RAG Chat
 
+> **⚠️ アーカイブのお知らせ（2026年3月）**
+>
+> このプロジェクトは**アーカイブ済み**であり、積極的なメンテナンスは行っていません。
+>
+> 開発時（2025年12月）の時点で、Gemini API にはすでに
+> [Documents API](https://ai.google.dev/api/file-search/documents) が存在しており、
+> File Search Store 内の個別ドキュメントの一覧取得・削除は可能でした。
+> このツールの開発動機であった「Store の中身を API で管理できない」は、
+> 実際には設計段階での見落としでした。
+>
+> コードは以下の参考実装として残しています:
+>
+> - Blue/Green パターンによる Store リフレッシュ
+> - MD5 ハッシュによるアップロード重複排除
+> - Streamlit + SQLAlchemy の統合例
+>
+> 開発の経緯は [Zenn 記事](https://zenn.dev/yh_catalysis/articles/filesearchtoolmgmt-dev1) をご覧ください。
+
 Google Gemini API の [File Search Tool (RAG)](https://ai.google.dev/gemini-api/docs/file-search) を管理・活用するためのローカル Streamlit アプリケーションです。
 
 ドキュメントのアップロード、Vector Storeのライフサイクル管理（Blue/Greenデプロイ）、および履歴保存機能付きのチャットGUIを提供します。
@@ -40,7 +58,7 @@ Google Gemini API の [File Search Tool (RAG)](https://ai.google.dev/gemini-api/
 ### 1. リポジトリのクローン
 
 ```bash
-git clone https://github.com/joelgoldschmidt0214/gemini_file_search_tool_mgmt.git
+git clone https://github.com/yh-catalysis/gemini_file_search_tool_mgmt.git
 cd gemini_file_search_tool_mgmt
 ```
 
@@ -85,16 +103,16 @@ streamlit run app.py
 サイドバーのナビゲーションで機能を切り替えます。
 
 1. **Documents (ドキュメント管理):**
-    - Storeの選択または新規作成を行います。
-    - ファイルをアップロードして同期します。
-    - ローカルファイルを直接編集した場合などは、**"🔄 Refresh Store"** を押すことでインデックスを再作成・クリーンアップできます。
-    - 最下部の "Danger Zone" からStoreを削除できます。
+   - Storeの選択または新規作成を行います。
+   - ファイルをアップロードして同期します。
+   - ローカルファイルを直接編集した場合などは、**"🔄 Refresh Store"** を押すことでインデックスを再作成・クリーンアップできます。
+   - 最下部の "Danger Zone" からStoreを削除できます。
 2. **RAG Chat (チャット):**
-    - 対話したいStoreを選択します。
-    - "✨ New Session" で新規会話を開始、または履歴から再開します。
-    - 入力欄の右上にあるボタンから履歴をJSON保存できます。
+   - 対話したいStoreを選択します。
+   - "✨ New Session" で新規会話を開始、または履歴から再開します。
+   - 入力欄の右上にあるボタンから履歴をJSON保存できます。
 3. **History Manager (履歴管理):**
-    - 保存されたチャットセッションの一覧表示と削除が可能です。
+   - 保存されたチャットセッションの一覧表示と削除が可能です。
 
 ## 🏗️ アーキテクチャ
 
